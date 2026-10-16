@@ -28,7 +28,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ inputs.tag }}
         run: |
-          gh release download "$TAG" --pattern "ffmpeg-windows-*.exe" --dir .
+          gh release download "$TAG" --repo "${{ github.repository }}" --pattern "ffmpeg-windows-*.exe" --dir .
           sha256sum ffmpeg-windows-*.exe
 
       - name: Attest x86_64
